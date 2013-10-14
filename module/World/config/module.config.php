@@ -74,7 +74,8 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'World\Controller\Index' => 'World\Controller\IndexController',
-            'World\Controller\Country' => 'World\Controller\CountryController'
+            'World\Controller\Country' => 'World\Controller\CountryController',
+            'World\Controller\CountryLanguage' => 'World\Controller\CountryLanguageController',
         ),
     ),
     'view_manager' => array(
