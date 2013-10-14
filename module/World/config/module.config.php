@@ -94,7 +94,7 @@ return array(
         'template_path_stack' => array(
             __DIR__ . '/../view',
         ),
-    ),
+    ),       
     // Placeholder for console routes
     'console' => array(
         'router' => array(
@@ -102,4 +102,18 @@ return array(
             ),
         ),
     ),
+    'doctrine' => array(
+        'driver' => array(
+            'World_driver' => array(
+                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+                'cache' => 'array',
+                'paths' => array(__DIR__ . '/../src/World/Entity')
+            ),
+            'orm_default' => array(
+                'drivers' => array(
+                     'World\Entity' =>  'World_driver'
+                ),
+            ),
+        ),
+    ),         
 );
