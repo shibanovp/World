@@ -11,5 +11,6 @@
         "php": ">=5.3.3",
         "zendframework/zendframework": ">2.2.0rc1",
         "zendframework/zftool":"dev-master",
+        "doctrine/doctrine-orm-module":"0.*"
     }
 }
