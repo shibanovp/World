@@ -76,6 +76,7 @@ return array(
             'World\Controller\Index' => 'World\Controller\IndexController',
             'World\Controller\Country' => 'World\Controller\CountryController',
             'World\Controller\CountryLanguage' => 'World\Controller\CountryLanguageController',
+            'World\Controller\City' => 'World\Controller\CityController',
         ),
     ),
     'view_manager' => array(
