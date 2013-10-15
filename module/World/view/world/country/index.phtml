@@ -20,7 +20,7 @@ if ($show) {
       <?php 
       for($i=1;$i<=$pages;$i++){
           ?>
-      <li class='lipagination' value='<?php echo $i;?>'><a><?php echo $i?></a></li>
+      <li class='<?php echo (1==$i)?"lipagination active":"lipagination";?>' value='<?php echo $i;?>' ><a><?php echo $i?></a></li>
           <?php 
       }
       ?>
