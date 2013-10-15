@@ -17,8 +17,9 @@ class CountryController extends AbstractActionController {
             $maxResult = (int) $arr[0];
             $page = abs((!empty($arr[1])) ? (int) $arr[1] : 1);
         }
+            $resultMap=array(5,10,25,50,100);
         if (empty($maxResult)) {
-            $maxResult = 10;
+            $maxResult = $resultMap[array_rand($resultMap)];
             $page = 1;
             $show = TRUE;
         } else {
@@ -43,6 +44,8 @@ class CountryController extends AbstractActionController {
             'pages' => $pages,
             'show' => $show,
             'getters' => $getters,
+            'resultMap' =>$resultMap,
+            'maxResult' =>$maxResult,
         ));
     }
 
