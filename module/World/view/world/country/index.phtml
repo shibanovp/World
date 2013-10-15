@@ -4,6 +4,7 @@ if ($show) {
     ?>
     <?php $this->headScript()->captureStart() ?>
     var BASE_URL = '<?php echo $this->basePath(); ?>';
+    var RESULTS = '<?php echo $count; ?>';
     <?php $this->headScript()->captureEnd() ?>
     <div>
          <div class="btn-group" id='maxResult'>
@@ -14,15 +15,10 @@ if ($show) {
                          <?php
                  }
              ?>
-              
-              <button class="btn" value="10">10</button>
-              <button class="btn" value="25">25</button>
-              <button class="btn" value="50">50</button>
-              <button class="btn" value="100">100</button>
-              <button class="btn" value="<?php echo $count;?>"> All</button>
+             <button class="btn" value="<?php echo $count;?>"> All</button>
          </div>
      <div class="pagination">
-  <ul>
+  <ul id="ulpagination">
       <?php 
       for($i=1;$i<=$pages;$i++){
           ?>
