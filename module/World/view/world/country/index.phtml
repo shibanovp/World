@@ -1,1 +1,65 @@
-Action "index", controller "Country", module "World".
+<?php
+if ($show) {
+    $this->headScript()->appendFile($this->basePath('/World/js/pages.js'));
+    ?>
+    <?php $this->headScript()->captureStart() ?>
+    var BASE_URL = '<?php echo $this->basePath(); ?>';
+    <?php $this->headScript()->captureEnd() ?>
+    <div>
+        
+         <div class="btn-group" id='maxResult'>
+              <button class="btn" value="5">5</button>
+              <button class="btn" value="10">10</button>
+              <button class="btn" value="25">25</button>
+              <button class="btn" value="50">50</button>
+              <button class="btn" value="100">100</button>
+              <button class="btn" value="<?php echo $count;?>"> All</button>
+         </div>
+     <div class="pagination">
+  <ul>
+      <?php 
+      for($i=1;$i<=$pages;$i++){
+          ?>
+      <li class='lipagination' value='<?php echo $i;?>'><a><?php echo $i?></a></li>
+          <?php 
+      }
+      ?>
+  </ul>
+         
+</div>
+        <table class='table table-bordered'>
+            <thead>
+                <tr>
+                    <?php
+                    foreach ($getters as $getter) {
+                        ?>
+                        <th><?php echo substr($getter, 3, strlen($getter) - 3); ?></th>
+                        <?php
+                    }
+                    ?>
+                </tr>
+            </thead>
+
+            <tbody id='tbody'>
+                <?php
+            }
+            foreach ($paginator as $country) {
+                ?>
+                <tr>
+                    <?php
+                    foreach ($getters as $getter) {
+                        ?>
+                        <td><?php echo $country->$getter(); ?></td>
+                        <?php
+                    }
+                    ?>
+                </tr>
+                <?php
+            }
+            if ($show) {
+                ?>
+            </tbody>
+        </table>
+    </div>
+<?php
+}?>
