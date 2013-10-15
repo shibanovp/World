@@ -39,10 +39,11 @@ return array(
                     'default' => array(
                         'type'    => 'Segment',
                         'options' => array(
-                            'route'    => '/[:controller[/:action]]',
+                            'route'    => '/[:controller[/:action]][/:id]',
                             'constraints' => array(
                                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'id'     => '[a-zA-Z0-9]*[&]?[a-zA-Z0-9_-]*',
                             ),
                             'defaults' => array(
                             ),
@@ -90,6 +91,8 @@ return array(
             'world/index/index' => __DIR__ . '/../view/world/index/index.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
+            //World templates
+            'layout/table'           => __DIR__ . '/../view/world/layout/table.phtml',
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',
