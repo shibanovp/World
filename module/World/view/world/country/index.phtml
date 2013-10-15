@@ -6,9 +6,15 @@ if ($show) {
     var BASE_URL = '<?php echo $this->basePath(); ?>';
     <?php $this->headScript()->captureEnd() ?>
     <div>
-        
          <div class="btn-group" id='maxResult'>
-              <button class="btn" value="5">5</button>
+             <?php
+                 foreach ($resultMap as $result){
+                     ?>
+             <button class="btn<?php echo ($maxResult==$result)? " active":'';;?>" value="<?php echo $result;?>"><?php echo $result;?></button>
+                         <?php
+                 }
+             ?>
+              
               <button class="btn" value="10">10</button>
               <button class="btn" value="25">25</button>
               <button class="btn" value="50">50</button>
