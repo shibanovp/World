@@ -1,7 +1,5 @@
 $(function(e) {   
     $(document).on('click',"li.lipagination",function(){
-        //alert('da');
-        
         $("#tbody *").remove();
         $("#tbody").append("<tr><td colspan='"+COLS+"'><div id='progressbar'></div></td></tr>");
         $( "#progressbar" ).progressbar({
@@ -15,6 +13,11 @@ $(function(e) {
     });
         
     $("#maxResult button").click(function() {
+        $("#tbody *").remove();
+        $("#tbody").append("<tr><td colspan='"+COLS+"'><div id='progressbar'></div></td></tr>");
+        $( "#progressbar" ).progressbar({
+            value: false
+        });
         $("#maxResult button").removeClass('active');
         $(this).addClass("active");
         var maxResults=$(this).attr("value");
