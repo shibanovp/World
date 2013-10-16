@@ -1,13 +1,16 @@
-$(function(e) {  
-    //$("#tbody").click(function() {$("#tbody").load(BASE_URL +'/world/country/index/10&2'); }); 
-    $("li.lipagination").click(function() {
+$(function(e) {   
+    $(document).on('click',"li.lipagination",function(){
+        //alert('da');
         $("li.lipagination").removeClass('active');
         $(this).addClass("active");
         var page =$(this).attr("value");
         var maxResult = $("#maxResult button.btn.active").attr("value");
+        $("#tbody *").remove();
+        tr = $("#tbody").append('<tr></tr>');
+        tr.append('<div id="progressbar"></div>');
         $("#tbody").load(BASE_URL +'/world/country/index/'+maxResult+'&'+page);
-    //    alert(maxResult); 
-        });
+    });
+        
     $("#maxResult button").click(function() {
         $("#maxResult button").removeClass('active');
         $(this).addClass("active");
@@ -18,17 +21,9 @@ $(function(e) {
             cname = (1==i)? 'lipagination active' : 'lipagination';
             li =$("#ulpagination").append('<li class="'+ cname+'" value="'+ i +'"><a>'+i+'</a></li>');
             $("#tbody").load(BASE_URL +'/world/country/index/'+maxResults+'&'+1);
-        } 
-        
+        }      
     });
-    $(document).on('click',"li.lipagination",function(){
-        //alert('da');
-        $("li.lipagination").removeClass('active');
-        $(this).addClass("active");
-        var page =$(this).attr("value");
-        var maxResult = $("#maxResult button.btn.active").attr("value");
-        $("#tbody").load(BASE_URL +'/world/country/index/'+maxResult+'&'+page);
-    })
+    
 });
 
 /* 
