@@ -1,6 +1,10 @@
+<div id="progressbar"></div>
 <?php
 if ($show) {
     $this->headScript()->appendFile($this->basePath('/World/js/pages.js'));
+    $this->headScript()->appendFile('http://code.jquery.com/ui/1.10.3/jquery-ui.js');
+     $this->headLink()->prependStylesheet("http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css");
+    
     ?>
     <?php $this->headScript()->captureStart() ?>
     var BASE_URL = '<?php echo $this->basePath(); ?>';
