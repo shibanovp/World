@@ -1,13 +1,16 @@
 $(function(e) {   
     $(document).on('click',"li.lipagination",function(){
         //alert('da');
+        
+        $("#tbody *").remove();
+        $("#tbody").append("<tr><td colspan='"+COLS+"'><div id='progressbar'></div></td></tr>");
+        $( "#progressbar" ).progressbar({
+            value: false
+        });
         $("li.lipagination").removeClass('active');
         $(this).addClass("active");
         var page =$(this).attr("value");
         var maxResult = $("#maxResult button.btn.active").attr("value");
-        $("#tbody *").remove();
-        tr = $("#tbody").append('<tr></tr>');
-        tr.append('<div id="progressbar"></div>');
         $("#tbody").load(BASE_URL +'/world/country/index/'+maxResult+'&'+page);
     });
         
