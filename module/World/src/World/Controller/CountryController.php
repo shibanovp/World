@@ -48,6 +48,27 @@ class CountryController extends AbstractActionController {
             'maxResult' =>$maxResult,
         ));
     }
+    
+
+    public function showAction()
+    {
+        return new ViewModel();
+    }
+
+    public function editAction()
+    {
+        return new ViewModel();
+    }
+
+    public function addAction()
+    {
+        return new ViewModel();
+    }
+
+    public function deleteAction()
+    {
+        return new ViewModel();
+    }
 
 }
 
