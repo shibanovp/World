@@ -13,10 +13,10 @@ return array(
             'home' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
-                    'route'    => '/',
+                    'route' => '/',
                     'defaults' => array(
                         'controller' => 'World\Controller\Index',
-                        'action'     => 'index',
+                        'action' => 'index',
                     ),
                 ),
             ),
@@ -25,25 +25,25 @@ return array(
             // module. Simply drop new controllers in, and you can access them
             // using the path /world/:controller/:action
             'world' => array(
-                'type'    => 'Literal',
+                'type' => 'Literal',
                 'options' => array(
-                    'route'    => '/world',
+                    'route' => '/world',
                     'defaults' => array(
                         '__NAMESPACE__' => 'World\Controller',
-                        'controller'    => 'Index',
-                        'action'        => 'index',
+                        'controller' => 'Index',
+                        'action' => 'index',
                     ),
                 ),
                 'may_terminate' => true,
                 'child_routes' => array(
                     'default' => array(
-                        'type'    => 'Segment',
+                        'type' => 'Segment',
                         'options' => array(
-                            'route'    => '/[:controller[/:action]][/:id]',
+                            'route' => '/[:controller[/:action]][/:id]',
                             'constraints' => array(
                                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                'id'     => '[a-zA-Z0-9]*[&]?[a-zA-Z0-9_-]*',
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'id' => '[a-zA-Z0-9]*[&]?[a-zA-Z0-9_-]*',
                             ),
                             'defaults' => array(
                             ),
@@ -66,9 +66,9 @@ return array(
         'locale' => 'en_US',
         'translation_file_patterns' => array(
             array(
-                'type'     => 'gettext',
+                'type' => 'gettext',
                 'base_dir' => __DIR__ . '/../language',
-                'pattern'  => '%s.mo',
+                'pattern' => '%s.mo',
             ),
         ),
     ),
@@ -77,27 +77,32 @@ return array(
             'World\Controller\Index' => 'World\Controller\IndexController',
             'World\Controller\Country' => 'World\Controller\CountryController',
             'World\Controller\CountryLanguage' => 'World\Controller\CountryLanguageController',
-            'World\Controller\City' => 'World\Controller\CityController',
+        //'World\Controller\City' => 'World\Controller\CityController',
+        ),
+        'factories' => array(
+            'World\Controller\City' => function (Zend\Mvc\Controller\ControllerManager $pm) {
+                return new World\Controller\CityController($pm->getServiceLocator()->get('Doctrine\ORM\EntityManager'));
+            }
         ),
     ),
     'view_manager' => array(
         'display_not_found_reason' => true,
-        'display_exceptions'       => true,
-        'doctype'                  => 'HTML5',
-        'not_found_template'       => 'error/404',
-        'exception_template'       => 'error/index',
+        'display_exceptions' => true,
+        'doctype' => 'HTML5',
+        'not_found_template' => 'error/404',
+        'exception_template' => 'error/index',
         'template_map' => array(
-            'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
+            'layout/layout' => __DIR__ . '/../view/layout/layout.phtml',
             'world/index/index' => __DIR__ . '/../view/world/index/index.phtml',
-            'error/404'               => __DIR__ . '/../view/error/404.phtml',
-            'error/index'             => __DIR__ . '/../view/error/index.phtml',
+            'error/404' => __DIR__ . '/../view/error/404.phtml',
+            'error/index' => __DIR__ . '/../view/error/index.phtml',
             //World templates
-            'layout/table'           => __DIR__ . '/../view/world/layout/table.phtml',
+            'layout/table' => __DIR__ . '/../view/world/layout/table.phtml',
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',
         ),
-    ),       
+    ),
     // Placeholder for console routes
     'console' => array(
         'router' => array(
@@ -114,9 +119,9 @@ return array(
             ),
             'orm_default' => array(
                 'drivers' => array(
-                     'World\Entity' =>  'World_driver'
+                    'World\Entity' => 'World_driver'
                 ),
             ),
         ),
-    ),         
+    ),
 );

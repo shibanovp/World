@@ -28,12 +28,12 @@ class CountryController extends AbstractActionController {
         $query = $em->createQuery('SELECT u FROM World\Entity\Country u')
                 ->setFirstResult(($page - 1) * $maxResult)
                 ->setMaxResults($maxResult);
-        $paginator = new Paginator($query, $fetchJoinCollection = true);
+        $paginator = new Paginator($query, $fetchJoinCollection = true);        
         $c = count($paginator);
         $pages = ceil($c / $maxResult);
         if (!$show)
             $this->layout('layout/table');
-
+        
         $getters = get_class_methods('World\Entity\Country');
         foreach ($getters as $k => $v)
             if (substr($v, 0, 3) != 'get')
