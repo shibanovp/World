@@ -1,21 +1,6 @@
 <?php
     $this->headScript()->appendFile('https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false');
     $this->headScript()->appendFile($this->basePath('/World/js/googlemap.js'));
-    //$this->headLink()->prependStylesheet("http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css");
-
+    $this->headLink()->prependStylesheet($this->basePath('/World/css/googlemap.css'));
 ?>
-<script src=""></script>
-    
-    <style>
-#map-canvas{ height:500px;
-             zoom:reset; 
-}
-#map-canvas img {
-     max-width: none;
-}
-#map-canvas label {
-  width: auto; display:inline;
-}
-
-        </style>
-    <div id="map-canvas" style=""></div>
+<div id="map-canvas" style=""></div>
