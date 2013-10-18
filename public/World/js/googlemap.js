@@ -14,8 +14,12 @@ var markerOptions = {
 };
 var marker = new google.maps.Marker(markerOptions);
 marker.setMap(map);
-var geocoder = google.maps.Geocoder();
-geocoder
+var geocoder = new  google.maps.Geocoder();
+geocoder.geocode( {"address": "france"} , function(GeocoderResult, GeocoderStatus){
+    //alert(GeocoderResult[0].geometry.bounds);
+    if (GeocoderStatus===google.maps.GeocoderStatus.OK)
+        map.fitBounds(GeocoderResult[0].geometry.bounds);
+});
 }
 google.maps.event.addDomListener(window, 'load', initialize); 
 });
