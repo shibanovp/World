@@ -7,7 +7,7 @@ use Zend\View\Model\ViewModel;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 
 class CountryController extends AbstractActionController {
-
+use \World\Model\EntityHelper;
     public function indexAction() {
         $em = $this->getServiceLocator()
                 ->get('doctrine.entitymanager.orm_default');
@@ -17,7 +17,7 @@ class CountryController extends AbstractActionController {
             $maxResult = (int) $arr[0];
             $page = abs((!empty($arr[1])) ? (int) $arr[1] : 1);
         }
-            $resultMap=array(5,10,25,50,100);
+        $resultMap=array(5,10,25,50,100);
         if (empty($maxResult)) {
             $maxResult = $resultMap[array_rand($resultMap)];
             $page = 1;
@@ -32,8 +32,7 @@ class CountryController extends AbstractActionController {
         $c = count($paginator);
         $pages = ceil($c / $maxResult);
         if (!$show)
-            $this->layout('layout/table');
-        
+            $this->layout('layout/table');        
         $getters = get_class_methods('World\Entity\Country');
         foreach ($getters as $k => $v)
             if (substr($v, 0, 3) != 'get')
