@@ -452,4 +452,7 @@ class Country
     {
         return $this->continent;
     }
+    public function __toString() {
+        return $this->name;
+    }
 }
