@@ -2,10 +2,8 @@ $(function(e) {
     $(document).on('click',"li.lipagination",function(){
         
         $("#tbody *").remove();
-        $("#tbody").append("<tr><td colspan='"+COLS+"'><div id='progressbar'></div></td></tr>");
-        $( "#progressbar" ).progressbar({
-            value: false
-        });
+        $("#tbody").append("<tr><td colspan='"+COLS+"'><div class='progress progress-striped active'><div class='bar' style='width: 100%;'></div></div></td></tr>");
+
         $("li.lipagination").removeClass('active');
         $(this).addClass("active");
         var page =$(this).attr("value");
@@ -15,10 +13,7 @@ $(function(e) {
         
     $("#maxResult button").click(function() {
         $("#tbody *").remove();
-        $("#tbody").append("<tr><td colspan='"+COLS+"'><div id='progressbar'></div></td></tr>");
-        $( "#progressbar" ).progressbar({
-            value: false
-        });
+        $("#tbody").append("<tr><td colspan='"+COLS+"'><div class='progress progress-striped active'><div class='bar' style='width: 100%;'></div></div></td></tr>");
         $("#maxResult button").removeClass('active');
         $(this).addClass("active");
         var maxResults=$(this).attr("value");
