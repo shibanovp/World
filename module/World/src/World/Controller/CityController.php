@@ -19,7 +19,15 @@ class CityController extends AbstractActionController
     }
     public function indexAction()
     {
-        var_dump($this->parseParams($this->params()->fromRoute('id', 0)));
+        $params = $this->parseParams($this->params()->fromRoute('id', 0));
+        $entityName ='World\Entity\City';
+        $paginator=  $this->getPaginator(
+                $this->entityManager,
+                $entityName, 
+                $params['maxResult'], 
+                $params['page']);
+        $getters =  $this->getEntityGetters($entityName);
+        var_dump($getters);
         return new ViewModel();
     }
 

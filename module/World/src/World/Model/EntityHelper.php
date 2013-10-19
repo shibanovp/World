@@ -1,5 +1,6 @@
 <?php
 namespace World\Model;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 /**
  * Description of EntityHelper
  *
@@ -31,5 +32,33 @@ trait EntityHelper {
             'page'=>$page,            
             'ajax'=>$ajaxRequest,            
         );
+    }
+    /**
+     * Get paginator depends on  entity name, max result and page number
+     * @param \Doctrine\ORM\EntityManager $entityManager Doctrine entity manager
+     * @param string $entityName Entity for pagination
+     * @param integer $maxResult How much results dispayed
+     * @param integer $page=1 Page number
+     * @return \Doctrine\ORM\Tools\Pagination\Paginator Paginator
+     */
+    public function getPaginator(\Doctrine\ORM\EntityManager $entityManager,$entityName,$maxResult,$page=1){
+        $query = $entityManager->createQuery("SELECT u FROM $entityName u")
+                ->setFirstResult(($page - 1) * $maxResult)
+                ->setMaxResults($maxResult);
+        $paginator = new Paginator($query, $fetchJoinCollection = true);
+        return $paginator;
+    }
+    /**
+     * Get entity's methods begins with 'get'
+     * @param string $entityName Entity
+     * @return array getters
+     */
+    
+    public function getEntityGetters($entityName){
+        $getters = get_class_methods($entityName);
+        foreach ($getters as $k => $v)
+            if (substr($v, 0, 3) != 'get')
+                unset($getters[$k]);
+        return $getters;
     }
 }
