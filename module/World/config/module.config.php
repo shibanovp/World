@@ -76,12 +76,15 @@ return array(
         'invokables' => array(
             'World\Controller\Index' => 'World\Controller\IndexController',
             'World\Controller\Country' => 'World\Controller\CountryController',
-            'World\Controller\CountryLanguage' => 'World\Controller\CountryLanguageController',
+            //'World\Controller\CountryLanguage' => 'World\Controller\CountryLanguageController',
         //'World\Controller\City' => 'World\Controller\CityController',
         ),
         'factories' => array(
             'World\Controller\City' => function (Zend\Mvc\Controller\ControllerManager $pm) {
                 return new World\Controller\CityController($pm->getServiceLocator()->get('Doctrine\ORM\EntityManager'));
+            },
+            'World\Controller\CountryLanguage' => function (Zend\Mvc\Controller\ControllerManager $pm) {
+                return new World\Controller\CountryLanguageController($pm->getServiceLocator()->get('Doctrine\ORM\EntityManager'));
             }
         ),
     ),

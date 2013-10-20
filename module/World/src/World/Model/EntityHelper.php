@@ -46,7 +46,7 @@ trait EntityHelper {
         $query = $entityManager->createQuery("SELECT u FROM $entityName u")
                 ->setFirstResult(($page - 1) * $maxResult)
                 ->setMaxResults($maxResult);
-        $paginator = new Paginator($query, $fetchJoinCollection = true);
+        $paginator = new Paginator($query, $fetchJoinCollection = FALSE);
         return $paginator;
     }
     /**
