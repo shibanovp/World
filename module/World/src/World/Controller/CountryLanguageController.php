@@ -7,6 +7,12 @@ use Zend\View\Model\ViewModel;
 
 class CountryLanguageController extends AbstractActionController
 {
+    use \World\Model\EntityHelper;
+    private $entityManager;
+    public function __construct (\Doctrine\ORM\EntityManager $entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
 
     public function indexAction()
     {
