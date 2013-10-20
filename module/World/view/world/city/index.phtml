@@ -1,1 +1,71 @@
 Action "index", controller "City", module "World".
+<?php
+if (!$ajax) {
+    
+    ?>
+    <?php $this->headScript()->captureStart() ?>
+    var BASE_URL = '<?php echo $this->basePath.'/world/city/index/'; ?>';
+    var RESULTS = '<?php echo $count; ?>';
+    var COLS = '<?php echo count($getters); ?>';
+    <?php $this->headScript()->captureEnd() ;
+    $this->headScript()->appendFile($this->basePath('/World/js/pages.js'));   
+            ?>
+    <div>        
+         <div class="btn-group" id='maxResult'>
+             <?php
+                 foreach ($resultMap as $result){
+                     ?>
+             <button class="btn<?php echo ($maxResult==$result)? " active":'';;?>" value="<?php echo $result;?>"><?php echo $result;?></button>
+                         <?php
+                 }
+             ?>
+             <button class="btn" value="<?php echo $count;?>"> All</button>
+         </div>
+     <div class="pagination">
+  <ul id="ulpagination">
+      <?php 
+      for($i=1;$i<=$pages;$i++){
+          ?>
+      <li class='<?php echo (1==$i)?"lipagination active":"lipagination";?>' value='<?php echo $i;?>' ><a><?php echo $i?></a></li>
+          <?php 
+      }
+      ?>
+  </ul>
+         
+</div>
+        <table class='table table-bordered'>
+            <thead>
+                <tr>
+                    <?php
+                    foreach ($getters as $getter) {
+                        ?>
+                        <th><?php echo substr($getter, 3, strlen($getter) - 3); ?></th>
+                        <?php
+                    }
+                    ?>
+                </tr>
+            </thead>
+
+            <tbody id='tbody'>
+                <?php
+            }
+            foreach ($paginator as $country) {
+                ?>
+                <tr>
+                    <?php
+                    foreach ($getters as $getter) {
+                        ?>
+                        <td><?php echo $country->$getter(); ?></td>
+                        <?php
+                    }
+                    ?>
+                </tr>
+                <?php
+            }
+            if (!$ajax) {
+                ?>
+            </tbody>
+        </table>
+    </div>
+<?php
+}?>

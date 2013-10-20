@@ -5,17 +5,15 @@ namespace World\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-use World\Model\EntityHelper;
+
 
 class CityController extends AbstractActionController
 {
-    use EntityHelper;
+    use \World\Model\EntityHelper;
     private $entityManager;
     public function __construct (\Doctrine\ORM\EntityManager $entityManager)
     {
         $this->entityManager = $entityManager;
-        //$res = $this->entityManager->getRepository('World\Entity\City')->findAll();
-        //var_dump($res);
     }
     public function indexAction()
     {
@@ -26,9 +24,17 @@ class CityController extends AbstractActionController
                 $entityName, 
                 $params['maxResult'], 
                 $params['page']);
-        $getters =  $this->getEntityGetters($entityName);
-        var_dump($getters);
-        return new ViewModel();
+        $count = count($paginator);
+        $results = array_merge($params, array(
+            'count' => $count,
+            'pages' => ceil($count / $params['maxResult']),
+            'paginator'=>$paginator,
+            'getters'=> $this->getEntityGetters($entityName),
+                
+        ));
+        if ($params['ajax'])
+            $this->layout('layout/table');
+        return new ViewModel($results);
     }
 
     public function showAction()

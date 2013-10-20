@@ -13,7 +13,7 @@ trait EntityHelper {
      * results from $resultMap if request is not ajax
      * @param string $params 
      * @param array $resultMap Map of possible max result options
-     * @return array assotiative array('maxResult'=>$maxResult,'page'=>$page,'ajax'=>$ajaxRequest);
+     * @return array assotiative array('maxResult'=>$maxResult,'page'=>$page,'ajax'=>$ajaxRequest,'resultMap'=>$resultMap,);
      */
     public function parseParams($params, $resultMap=array(5,10,25,50,100)){
         if ($params) {
@@ -30,7 +30,8 @@ trait EntityHelper {
         return array(
             'maxResult'=>$maxResult,
             'page'=>$page,            
-            'ajax'=>$ajaxRequest,            
+            'ajax'=>$ajaxRequest,
+            'resultMap'=>$resultMap,
         );
     }
     /**
