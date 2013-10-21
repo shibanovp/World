@@ -42,7 +42,7 @@ class IndexController extends AbstractActionController
         $query->setParameter('search', '%1980%');
         $query->setMaxResults(5);
         $results = $query->getResult();
-        var_dump($results);
+//        var_dump($results);
         return new ViewModel();
     }
 }
