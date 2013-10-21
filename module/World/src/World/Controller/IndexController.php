@@ -43,6 +43,8 @@ class IndexController extends AbstractActionController
         $query->setMaxResults(5);
         $results = $query->getResult();
 //        var_dump($results);
-        return new ViewModel();
+        $vm =new ViewModel();
+        $vm->setTerminal(TRUE);
+        return $vm;
     }
 }
