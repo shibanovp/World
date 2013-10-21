@@ -33,7 +33,6 @@ class CountryLanguageController extends AbstractActionController
         ));
         if ($params['ajax'])
             $this->layout('layout/table');
-        var_dump($results);
         return new ViewModel($results);
     }
 

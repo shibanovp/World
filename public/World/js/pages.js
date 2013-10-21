@@ -1,8 +1,5 @@
 $(function(e) {   
-    
-    alert(BASE_URL);
     $(document).on('click',"li.lipagination",function(){
-        
         $("#tbody *").remove();
         $("#tbody").append("<tr><td colspan='"+COLS+"'><div class='progress progress-striped active'><div class='bar' style='width: 100%;'></div></div></td></tr>");
         $("li.lipagination").removeClass('active');

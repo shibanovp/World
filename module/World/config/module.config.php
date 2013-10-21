@@ -74,12 +74,15 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'World\Controller\Index' => 'World\Controller\IndexController',
+            //'World\Controller\Index' => 'World\Controller\IndexController',
             'World\Controller\Country' => 'World\Controller\CountryController',
             //'World\Controller\CountryLanguage' => 'World\Controller\CountryLanguageController',
         //'World\Controller\City' => 'World\Controller\CityController',
         ),
         'factories' => array(
+            'World\Controller\Index' =>function (Zend\Mvc\Controller\ControllerManager $pm) {
+                return new World\Controller\IndexController($pm->getServiceLocator()->get('Doctrine\ORM\EntityManager'));
+            }, 
             'World\Controller\City' => function (Zend\Mvc\Controller\ControllerManager $pm) {
                 return new World\Controller\CityController($pm->getServiceLocator()->get('Doctrine\ORM\EntityManager'));
             },
