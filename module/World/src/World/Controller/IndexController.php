@@ -44,7 +44,6 @@ class IndexController extends AbstractActionController
         $results = $query->getResult();
 //        var_dump($results);
         $vm =new ViewModel();
-        $vm->setTerminal(TRUE);
         return $vm;
     }
 }
