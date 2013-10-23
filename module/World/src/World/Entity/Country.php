@@ -99,9 +99,12 @@ class Country
     private $headofstate;
 
     /**
-     * @var integer
+     * @var \World\Entity\City
      *
-     * @ORM\Column(name="Capital", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="World\Entity\City")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Capital", referencedColumnName="ID")
+     * })
      */
     private $capital;
 
@@ -387,10 +390,10 @@ class Country
     /**
      * Set capital
      *
-     * @param integer $capital
+     * @param \World\Entity\City $capital
      * @return Country
      */
-    public function setCapital($capital)
+    public function setCapital(\World\Entity\City  $capital)
     {
         $this->capital = $capital;
 
@@ -400,7 +403,7 @@ class Country
     /**
      * Get capital
      *
-     * @return integer 
+     * @return \World\Entity\City
      */
     public function getCapital()
     {
