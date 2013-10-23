@@ -1,13 +1,15 @@
 <?php
-if ($show) {
-    $this->headScript()->appendFile($this->basePath('/World/js/pages.js'));   
+if (!$ajax) {
+    
     ?>
     <?php $this->headScript()->captureStart() ?>
-    var BASE_URL = '<?php echo $this->basePath().'/world/country/index/'; ?>';
+    var BASE_URL = '<?php echo $this->basePath.'/world/country/index/'; ?>';
     var RESULTS = '<?php echo $count; ?>';
     var COLS = '<?php echo count($getters); ?>';
-    <?php $this->headScript()->captureEnd() ?>
-    <div>
+    <?php $this->headScript()->captureEnd() ;
+    $this->headScript()->appendFile($this->basePath('/World/js/pages.js'));   
+            ?>
+    <div>        
          <div class="btn-group" id='maxResult'>
              <?php
                  foreach ($resultMap as $result){
@@ -59,7 +61,7 @@ if ($show) {
                 </tr>
                 <?php
             }
-            if ($show) {
+            if (!$ajax) {
                 ?>
             </tbody>
         </table>

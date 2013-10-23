@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework (http://framework.zend.com/)
  *
@@ -6,7 +7,6 @@
  * @copyright Copyright (c) 2005-2013 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
-
 return array(
     'router' => array(
         'routes' => array(
@@ -74,21 +74,24 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            //'World\Controller\Index' => 'World\Controller\IndexController',
-            'World\Controller\Country' => 'World\Controller\CountryController',
-            //'World\Controller\CountryLanguage' => 'World\Controller\CountryLanguageController',
+        //'World\Controller\Index' => 'World\Controller\IndexController',
+        //'World\Controller\Country' => 'World\Controller\CountryController',
+        //'World\Controller\CountryLanguage' => 'World\Controller\CountryLanguageController',
         //'World\Controller\City' => 'World\Controller\CityController',
         ),
         'factories' => array(
-            'World\Controller\Index' =>function (Zend\Mvc\Controller\ControllerManager $pm) {
-                return new World\Controller\IndexController($pm->getServiceLocator()->get('Doctrine\ORM\EntityManager'));
-            }, 
+            'World\Controller\Index' => function (Zend\Mvc\Controller\ControllerManager $pm) {    
+        return new World\Controller\IndexController($pm->getServiceLocator()->get('Doctrine\ORM\EntityManager'));
+    },
+            'World\Controller\Country' => function (Zend\Mvc\Controller\ControllerManager $pm) {
+        return new World\Controller\CountryController($pm->getServiceLocator()->get('Doctrine\ORM\EntityManager'));
+    },
             'World\Controller\City' => function (Zend\Mvc\Controller\ControllerManager $pm) {
-                return new World\Controller\CityController($pm->getServiceLocator()->get('Doctrine\ORM\EntityManager'));
-            },
+        return new World\Controller\CityController($pm->getServiceLocator()->get('Doctrine\ORM\EntityManager'));
+    },
             'World\Controller\CountryLanguage' => function (Zend\Mvc\Controller\ControllerManager $pm) {
-                return new World\Controller\CountryLanguageController($pm->getServiceLocator()->get('Doctrine\ORM\EntityManager'));
-            }
+        return new World\Controller\CountryLanguageController($pm->getServiceLocator()->get('Doctrine\ORM\EntityManager'));
+    }
         ),
     ),
     'view_manager' => array(
@@ -103,7 +106,7 @@ return array(
             'error/404' => __DIR__ . '/../view/error/404.phtml',
             'error/index' => __DIR__ . '/../view/error/index.phtml',
             //World templates
-            'layout/table' => __DIR__ . '/../view/world/layout/table.phtml',
+            //'layout/table' => __DIR__ . '/../view/world/layout/table.phtml',
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',

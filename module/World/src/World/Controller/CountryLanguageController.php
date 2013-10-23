@@ -18,22 +18,18 @@ class CountryLanguageController extends AbstractActionController
     {
         $params = $this->parseParams($this->params()->fromRoute('id', 0));
         $entityName ='World\Entity\CountryLanguage';
-        $paginator=  $this->getPaginator(
-                $this->entityManager,
-                $entityName, 
-                $params['maxResult'], 
-                $params['page']);
+        $paginator=  $this->getPaginator($this->entityManager,$entityName,$params['maxResult'],$params['page']);
         $count = count($paginator);
         $results = array_merge($params, array(
             'count' => $count,
             'pages' => ceil($count / $params['maxResult']),
             'paginator'=>$paginator,
-            'getters'=> $this->getEntityGetters($entityName),
-                
+            'getters'=> $this->getEntityGetters($entityName),                
         ));
+        $viewModel=new ViewModel($results);
         if ($params['ajax'])
-            $this->layout('layout/table');
-        return new ViewModel($results);
+            $viewModel->setTerminal(TRUE);
+        return $viewModel;
     }
 
     public function showAction()
