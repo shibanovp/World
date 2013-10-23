@@ -16,7 +16,7 @@ class CountryLanguageController extends AbstractActionController
 
     public function indexAction()
     {
-        $params = $this->parseParams($this->params()->fromRoute('id', 0));
+        $params = $this->parseParams($this->params()->fromRoute('id', 0),$resultMap=array(50,100,200,300,400));
         $entityName ='World\Entity\CountryLanguage';
         $paginator=  $this->getPaginator($this->entityManager,$entityName,$params['maxResult'],$params['page']);
         $count = count($paginator);

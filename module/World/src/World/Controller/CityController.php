@@ -17,7 +17,7 @@ class CityController extends AbstractActionController
     }
     public function indexAction()
     {
-        $params = $this->parseParams($this->params()->fromRoute('id', 0));
+        $params = $this->parseParams($this->params()->fromRoute('id', 0),$resultMap=array(100,200,500,1000));
         $entityName ='World\Entity\City';
         $paginator=  $this->getPaginator($this->entityManager,$entityName,$params['maxResult'],$params['page']);
         $count = count($paginator);
