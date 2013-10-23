@@ -55,7 +55,11 @@ if (!$ajax) {
                     <?php
                     foreach ($getters as $getter) {
                         ?>
-                        <td><?php echo $country->$getter(); ?></td>
+                        <td><?php if($getter!='getIsofficial')
+                            echo $country->$getter();
+                        else 
+                            echo ($country->$getter()=='1')?'yes':'no';
+                        ?></td>
                         <?php
                     }
                     ?>
