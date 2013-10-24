@@ -36,14 +36,13 @@ class IndexController extends AbstractActionController
             OR c.localname LIKE :search
             OR c.governmentform LIKE :search
             OR c.headofstate LIKE :search
-            OR c.capital LIKE :search
             OR c.code2 LIKE :search
             OR c.continent LIKE :search");
         $query->setParameter('search', '%1980%');
         $query->setMaxResults(5);
         $results = $query->getResult();
 //        var_dump($results);
-        $vm =new ViewModel();
+        $vm =new ViewModel($results);
         return $vm;
     }
 }

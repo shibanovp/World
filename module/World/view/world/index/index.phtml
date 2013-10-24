@@ -1,8 +1,12 @@
+
 <?php
     $this->headScript()->appendFile($this->basePath('/World/js/search.js'));
+    $this->headScript()->appendFile($this->basePath('/World/js/typeahead.js'));
+    $this->headLink()->prependStylesheet($this->basePath('/World/css/typeahead.js-bootstrap.css'));
     //$this->headScript()->appendFile($this->basePath('/World/js/bootstrap-typeahead.js'));   
 ?>
-<input id="typeahead" type="text" data-provide="typeahead">
+<!--<input id="typeahead" type="text" data-provide="typeahead">-->
+<input id="input"class="tt-query" type="text">
 <!--<div class="hero-unit">
 
 <input class="input-xxlarge" type="text" data-provide="typeahead" style="min-height: 10px !important; height:  40px ; font-size: 40px;">

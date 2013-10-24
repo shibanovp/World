@@ -1,6 +1,12 @@
 $(function(e) {
-    $('#typeahead').typeahead({"source": ['aaas']});
-
+    //$('#typeahead').typeahead({"source": ['aaas']});
+$('#input').typeahead([
+    {
+        name: 'Test',
+        local: [ "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Nine" ],
+        header: '<h5 class="league-name">Test</h3>'
+    }
+]);
 });
 
 /* 
