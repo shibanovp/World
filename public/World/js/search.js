@@ -1,5 +1,4 @@
 $(function(e) {
-    //$('#typeahead').typeahead({"source": ['aaas']});
 $('#input').typeahead([
     {
         name: 'Test',
