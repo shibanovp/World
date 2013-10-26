@@ -3,7 +3,7 @@ $('#input').typeahead([
     {
         name: 'Test',
         local: [ "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Nine" ],
-        header: '<h5 class="league-name">Test</h3>'
+        header: '<h5 class="test">Test</h3>'
     }
 ]);
 });
