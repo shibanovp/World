@@ -32,7 +32,11 @@ class CountryController extends AbstractActionController {
 
     public function showAction()
     {
-        return new ViewModel();
+        $code = $this->params()->fromRoute('id', 0);
+        $entityName ='World\Entity\Country';
+        $country = $this->entityManager->getRepository($entityName)->findOneBy(array('code'=>$code));
+        //var_dump($result);
+        return new ViewModel(array('country'=>$country));
     }
 
     public function editAction()

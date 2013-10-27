@@ -23,7 +23,7 @@ function initialize() {
    // mapTypeId: google.maps.MapTypeId.ROADMAP
   };
     map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
-   markAddress('russia'); 
+   markAddress(COUNTRY); 
     
 
 }
