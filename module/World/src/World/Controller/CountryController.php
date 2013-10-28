@@ -36,7 +36,11 @@ class CountryController extends AbstractActionController {
         $entityName ='World\Entity\Country';
         $country = $this->entityManager->getRepository($entityName)->findOneBy(array('code'=>$code));
         //var_dump($result);
-        return new ViewModel(array('country'=>$country));
+        if ($country)
+            return new ViewModel(array(
+                'country'=>$country,
+                'getters'=>$this->getEntityGetters($entityName)));
+        return $this->redirect()->toRoute('world');
     }
 
     public function editAction()

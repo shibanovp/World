@@ -5,7 +5,13 @@
 ?>
     <?php
     $this->headScript()->captureStart() ?>
-    var COUNTRY = '<?php echo $country->getName() ?>';
+    var COUNTRY = '<?php echo $country->getName()?>';
     <?php $this->headScript()->captureEnd() ;
 ?>
+    <h1><?php echo $country->getName()?></h1>
+    <?php
+foreach ($getters as $getter){
+    
+}
+    ?>
 <div id="map-canvas" style=""></div>
