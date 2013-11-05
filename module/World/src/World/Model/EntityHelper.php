@@ -60,6 +60,7 @@ trait EntityHelper {
         foreach ($getters as $k => $v)
             if (substr($v, 0, 3) != 'get')
                 unset($getters[$k]);
+            else $k=substr($v, 3, strlen($v) - 3);
         return $getters;
     }
 }
