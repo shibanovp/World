@@ -57,10 +57,11 @@ trait EntityHelper {
     
     public function getEntityGetters($entityName){
         $getters = get_class_methods($entityName);
-        foreach ($getters as $k => $v)
-            if (substr($v, 0, 3) != 'get')
-                unset($getters[$k]);
-            else $k=substr($v, 3, strlen($v) - 3);
+        foreach ($getters as $k => $v){
+            if (substr($v, 0, 3) == 'get')
+                $getters[substr($v, 3, strlen($v) - 3)]=$v;
+            unset($getters[$k]);
+        }
         return $getters;
     }
 }
