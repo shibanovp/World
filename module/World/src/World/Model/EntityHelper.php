@@ -50,7 +50,7 @@ trait EntityHelper {
         return $paginator;
     }
     /**
-     * Get entity's methods begins with 'get'
+     * Get entity's methods begins with 'get' in associative array
      * @param string $entityName Entity
      * @return array getters
      */
