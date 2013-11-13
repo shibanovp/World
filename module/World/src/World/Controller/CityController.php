@@ -35,7 +35,15 @@ class CityController extends AbstractActionController
 
     public function showAction()
     {
-        return new ViewModel();
+        $id = $this->params()->fromRoute('id', 0);
+        $entityName ='World\Entity\City';
+        $city = $this->entityManager->getRepository($entityName)->findOneBy(array('id'=>$id));
+        //var_dump($result);
+        if ($city)
+            return new ViewModel(array(
+                'city'=>$city,
+                'getters'=>$this->getEntityGetters($entityName)));
+        return $this->redirect()->toRoute('world');
     }
 
     public function editAction()

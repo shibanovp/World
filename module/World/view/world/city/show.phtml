@@ -1,3 +1,13 @@
-Module: World
-Controller: City
-Action: show
+
+    <h1><?php echo $city->getName()?></h1>
+    
+    <dl class="dl-horizontal">
+    <?php
+    //var_dump($getters);
+foreach ($getters as $getterKey=>$getter){?>
+  <dt><?=$getterKey?></dt>
+  <dd><?=$city->$getter()?></dd>
+<?php
+}
+    ?>
+  </dl>
