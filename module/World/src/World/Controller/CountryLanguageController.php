@@ -34,7 +34,15 @@ class CountryLanguageController extends AbstractActionController
 
     public function showAction()
     {
-        return new ViewModel();
+        $language = $this->params()->fromRoute('id', 0);
+        $entityName ='World\Entity\CountryLanguage';
+        $countryLanguage = $this->entityManager->getRepository($entityName)->findOneBy(array('Language'=>$language));
+        //var_dump($result);
+        if ($countryLanguage)
+            return new ViewModel(array(
+                'country-language'=>$countryLanguage,
+                'getters'=>$this->getEntityGetters($entityName)));
+        return $this->redirect()->toRoute('world');
     }
 
     public function editAction()
