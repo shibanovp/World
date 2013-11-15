@@ -8,6 +8,7 @@ foreach ($getters as $getterKey=>$getter){?>
   <dt><?=$getterKey?></dt>
   <dd><?php if($getterKey=='Isofficial')
                echo ($countrylanguage->$getter())?'Yes':'No';
+            else
             echo $countrylanguage->$getter()?></dd>
 <?php
 }
