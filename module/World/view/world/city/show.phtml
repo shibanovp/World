@@ -1,23 +1,20 @@
 <?php
-    $this->headScript()->appendFile('https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false');
-    $this->headScript()->appendFile($this->basePath('/World/js/googlemap.js'));
-    $this->headLink()->prependStylesheet($this->
-            basePath('/World/css/googlemap.css'));
+$this->headScript()->appendFile('https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false');
+$this->headScript()->appendFile($this->basePath('/World/js/googlemap.js'));
+$this->headLink()->prependStylesheet($this->
+                basePath('/World/css/googlemap.css'));
 ?>
-    <?php
-    $this->headScript()->captureStart() ?>
-    var COUNTRY = '<?php echo $city->getName()?>';
-    <?php $this->headScript()->captureEnd() ;
+<?php $this->headScript()->captureStart() ?>
+var COUNTRY = '<?php echo $city->getName() ?>';
+<?php $this->headScript()->captureEnd();
 ?>
-    <h1><?php echo $city->getName()?></h1>
-    
-    <dl class="dl-horizontal">
+<h1><?php echo $city->getName() ?></h1>
+
+<dl class="dl-horizontal">
+    <?php foreach ($getters as $getterKey => $getter) { ?>
+        <dt><?= $getterKey ?></dt>
+        <dd><?= $city->$getter() ?></dd>
     <?php
-    //var_dump($getters);
-foreach ($getters as $getterKey=>$getter){?>
-  <dt><?=$getterKey?></dt>
-  <dd><?=$city->$getter()?></dd>
-<?php
 }
-    ?>
-  </dl>
+?>
+</dl>
