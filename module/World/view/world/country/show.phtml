@@ -7,6 +7,7 @@
     <?php
     $this->headScript()->captureStart() ?>
     var COUNTRY = '<?php echo $country->getName()?>';
+    var CAPITAL = '<?php echo $country->getCapital()?>';
     <?php $this->headScript()->captureEnd() ;
 ?>
     <h1><?php echo $country->getName()?></h1>
